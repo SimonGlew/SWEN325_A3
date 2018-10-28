@@ -34,7 +34,7 @@ export class MqttBrokerProvider {
 
   public connect = () => {
     this.mqttStatus = 'Connecting...';
-    this.mqttClient = new Paho.MQTT.Client('barretts.ecs.vuw.ac.nz', 8883, '/mqtt', this.clientId);
+    this.mqttClient = new Paho.MQTT.Client('localhost', 22389, '/mqtt', this.clientId);
 
     // set callback handlers
     this.mqttClient.onConnectionLost = this.onConnectionLost;
@@ -88,7 +88,7 @@ export class MqttBrokerProvider {
       }
     }
 
-    if (this.getMinutesBetweenDates(this.lastSeen, new Date()) >= 0.25 && !this.alertShown) {
+    if (this.getMinutesBetweenDates(this.lastSeen, new Date()) >= 5 && !this.alertShown) {
       this.alertShown = true
       this.eventProvider.publish('showAlert', {})
     }
