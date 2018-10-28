@@ -1,5 +1,6 @@
 {
   "name": "a3",
   "integrations": {},
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "app_id": ""
 }

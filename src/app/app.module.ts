@@ -3,22 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+
+import { StatusPage } from '../pages/status/status'
+import { BatteryPage } from '../pages/battery/battery'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { DataProvider } from '../providers/data/data';
+
+import { MqttBrokerProvider } from '../providers/mqtt-broker/mqtt-broker'
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    TabsPage,
+    StatusPage,
+    BatteryPage
   ],
   imports: [
     BrowserModule,
@@ -27,16 +27,15 @@ import { DataProvider } from '../providers/data/data';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    TabsPage,
+    StatusPage,
+    BatteryPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataProvider
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    MqttBrokerProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
